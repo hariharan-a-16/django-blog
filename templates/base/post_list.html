@@ -1,39 +1,7 @@
-{% extends 'mainapp/base.html' %}
+{% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-
-<style>
-.blog-card {
-    border-radius: 18px;
-    transition: 0.3s ease;
-}
-
-.blog-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-}
-
-.blog-title {
-    font-weight: 700;
-    color: #0d6efd;
-}
-
-.blog-content {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #444;
-}
-
-.blog-meta {
-    font-size: 13px;
-    color: #777;
-}
-
-.read-btn:hover {
-    background-color: #0d6efd;
-    color: white !important;
-}
-</style>
 
 <div class="container mt-5">
 
@@ -42,32 +10,27 @@
     </h1>
 
     {% for post in posts %}
-    <div class="card blog-card shadow-sm mb-4 border-0">
+    <div class="card shadow-sm mb-4 border-0">
 
         <div class="card-body p-4">
 
-            <!-- Title -->
-            <h4 class="blog-title mb-2">
+            <h4 class="fw-bold text-primary">
                 {{ post.title }}
             </h4>
 
-            <!-- Author & Date -->
-            <div class="blog-meta mb-3">
-                👤 {{ post.author }}  
-                &nbsp; | &nbsp;
+            <p class="text-muted small mb-2">
+                👤 {{ post.author }} |
                 📅 {{ post.created_at|date:"F d, Y" }}
-            </div>
+            </p>
 
             <hr>
 
-            <!-- Short Content -->
-            <p class="blog-content mt-3">
+            <p style="line-height: 1.8;">
                 {{ post.content|truncatewords:25 }}
             </p>
 
-            <!-- Button -->
-            <a href="{% url 'post_detail' post.pk %}" 
-               class="btn btn-outline-primary mt-3 px-4 read-btn">
+            <a href="{% url 'post_detail' post.pk %}"
+               class="btn btn-outline-primary mt-3">
                Read More →
             </a>
 

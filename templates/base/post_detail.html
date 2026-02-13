@@ -1,68 +1,30 @@
-{% extends 'mainapp/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
 
-<style>
-.blog-card {
-    border-radius: 18px;
-    transition: 0.3s ease;
-}
-
-.blog-card:hover {
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-}
-
-.blog-title {
-    font-weight: 700;
-    color: #0d6efd;
-    letter-spacing: 1px;
-}
-
-.blog-content {
-    font-size: 18px;
-    line-height: 1.9;
-    color: #444;
-}
-
-.blog-meta {
-    font-size: 14px;
-    color: #777;
-}
-
-.back-btn:hover {
-    background-color: #0d6efd;
-    color: white !important;
-}
-</style>
-
 <div class="container mt-5">
 
-    <div class="card blog-card shadow-lg p-5 border-0">
+    <div class="card shadow-lg border-0 p-5">
 
-        <!-- Title -->
-        <h1 class="blog-title mb-3">
+        <h1 class="fw-bold text-primary mb-3">
             {{ post.title }}
         </h1>
 
-        <!-- Author + Date -->
-        <div class="blog-meta mb-4">
-            👤 <strong>{{ post.author }}</strong>  
-            &nbsp; | &nbsp;
+        <p class="text-muted mb-4">
+            👤 <strong>{{ post.author }}</strong> |
             📅 {{ post.created_at|date:"F d, Y" }}
-        </div>
+        </p>
 
         <hr>
 
-        <!-- Content -->
-        <div class="blog-content mt-4">
+        <div style="line-height: 1.9; font-size: 17px;">
             {{ post.content }}
         </div>
 
-        <!-- Back Button -->
         <div class="mt-5">
             <a href="{% url 'post_list' %}" 
-               class="btn btn-outline-primary px-4 py-2 back-btn">
+               class="btn btn-outline-primary">
                ← Back to Blog
             </a>
         </div>
